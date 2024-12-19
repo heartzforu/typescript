@@ -2,16 +2,27 @@ import React, { useContext } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { MdAutoGraph } from "react-icons/md";
 import { FaUserCircle } from "react-icons/fa";
-import { AppContext } from "../App";
+import { AppContext } from "../App"; // Use the correct context
 
 function ResponsiveNavbar() {
   const navigate = useNavigate();
   const location = useLocation();
-  const { setIsLoggedIn } = useContext(AppContext);
+
+  // Using the correct AppContext type directly
+  const context = useContext(AppContext);
+
+  // If context is undefined, throw an error or return null
+  if (!context) {
+    throw new Error(
+      "AppContext is not available, ensure the AppProvider is wrapping this component."
+    );
+  }
+
+  const { setIsLoggedIn, totalExpense } = context;
 
   const handleLogout = () => {
     localStorage.setItem("isLoggedIn", "false");
-    setIsLoggedIn?.(false);
+    setIsLoggedIn(false);
     navigate("/");
   };
 
@@ -30,23 +41,31 @@ function ResponsiveNavbar() {
                   Expense Tracker
                 </a>
                 <div>
-                  {location.pathname === "/expense"?(<button
-                    className="block w-full text-white text-left hover:text-yellow-300 font-medium py-3 mx-6"
-                    onClick={() => navigate("/view")}
-                  >
-                    View
-                  </button>):(
-                  <button
-                    className="block w-full text-white text-left hover:text-yellow-300 font-medium py-3 mx-6"
-                    onClick={() => navigate("/expense")}
-                  >
-                    Add
-                  </button>)}
+                  {location.pathname === "/expense" ? (
+                    <button
+                      className="block w-full text-white text-left hover:text-yellow-300 font-medium py-3 mx-6"
+                      onClick={() => navigate("/view")}
+                    >
+                      View
+                    </button>
+                  ) : (
+                    <button
+                      className="block w-full text-white text-left hover:text-yellow-300 font-medium py-3 mx-6"
+                      onClick={() => navigate("/expense")}
+                    >
+                      Add
+                    </button>
+                  )}
                 </div>
               </div>
 
-              <div className="flex items-center">
-                <FaUserCircle className="text-white text-3xl hover:text-yellow-300 transition cursor-pointer" />
+              <div className="flex items-center justify-between">
+                <div >
+                  <h3 className="text-md text-yellow-300 mx-2">
+                    ${totalExpense.toFixed(2)}
+                  </h3> 
+                </div>
+                <FaUserCircle className="text-white text-3xl hover:text-yellow-300 transition cursor-pointer mx-2" />
                 <button
                   onClick={handleLogout}
                   className="block w-full text-white text-left hover:text-yellow-300 font-medium py-2"

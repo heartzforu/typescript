@@ -13,7 +13,10 @@ interface LoginError {
 
 function Login() {
   const [data, setData] = useState<LoginData>({ username: "", password: "" });
-  const [error, setError] = useState<LoginError>({ username: "", password: "" });
+  const [error, setError] = useState<LoginError>({
+    username: "",
+    password: "",
+  });
   const navigate = useNavigate();
 
   // Function to get values from input field
@@ -26,9 +29,11 @@ function Login() {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    const storedData = JSON.parse(localStorage.getItem("users") || "[]");
+    const storedData: LoginData[] = JSON.parse(
+      localStorage.getItem("users") || "[]"
+    );
     const user = storedData?.find(
-      (element: LoginData) =>
+      (element) =>
         element.username === data.username && element.password === data.password
     );
 
@@ -42,13 +47,17 @@ function Login() {
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-blue-50">
       <div className="bg-white p-8 rounded-lg shadow-lg max-w-md w-full">
-        <h1 className="text-3xl font-bold text-gray-800 mb-6 text-left">Login</h1>
-        {/*Login form section*/}
+        <h1 className="text-3xl font-bold text-gray-800 mb-6 text-left">
+          Login
+        </h1>
+        {/* Login form section */}
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
-            <label className="block text-gray-700 font-medium mb-2">Username</label>
+            <label className="block text-gray-700 font-medium mb-2">
+              Username
+            </label>
             <input
-            placeholder="username"
+              placeholder="username"
               type="text"
               name="username"
               value={data.username}
@@ -57,13 +66,17 @@ function Login() {
                 error.username ? "border-red-500" : "border-gray-300"
               }`}
             />
-            {error.username && <p className="text-red-500 text-sm mt-1">{error.username}</p>}
+            {error.username && (
+              <p className="text-red-500 text-sm mt-1">{error.username}</p>
+            )}
           </div>
 
           <div className="mb-6">
-            <label className="block text-gray-700 font-medium mb-2">Password</label>
+            <label className="block text-gray-700 font-medium mb-2">
+              Password
+            </label>
             <input
-            placeholder="password"
+              placeholder="password"
               type="password"
               name="password"
               value={data.password}
@@ -72,7 +85,9 @@ function Login() {
                 error.password ? "border-red-500" : "border-gray-300"
               }`}
             />
-            {error.password && <p className="text-red-500 text-sm mt-1">{error.password}</p>}
+            {error.password && (
+              <p className="text-red-500 text-sm mt-1">{error.password}</p>
+            )}
           </div>
 
           <button
@@ -81,10 +96,13 @@ function Login() {
           >
             Login
           </button>
-          {/*Navigation to Add new user */}
+          {/* Navigation to Add new user */}
           <p className="text-center text-gray-600 mt-4">
             Don't have an account?{" "}
-            <a href="/register" className="text-blue-600 underline hover:text-blue-800">
+            <a
+              href="/register"
+              className="text-blue-600 underline hover:text-blue-800"
+            >
               Register
             </a>
           </p>

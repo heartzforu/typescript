@@ -1,21 +1,8 @@
-import React, { useState } from "react";
-
-interface Expense {
-  description: string;
-  amount: number;
-  date: string;
-}
+import { useContext } from "react";
+import { AppContext } from "../App";
 
 function Dashboard() {
-  const [expenses, setExpenses] = useState<Expense[]>(() => {
-    const storedExpenses = JSON.parse(localStorage.getItem("expenses") || "[]");
-    return storedExpenses || [];
-  });
-
-  const totalExpense = expenses.reduce(
-    (total, expense) => total + expense.amount,
-    0
-  );
+  const { totalExpense } = useContext(AppContext)!;
 
   return (
     <div className="min-h-screen bg-cover bg-center flex items-center justify-center">

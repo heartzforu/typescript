@@ -74,7 +74,7 @@ const Register: React.FC = () => {
               Name
             </label>
             <input
-            placeholder="Name"
+              placeholder="Name"
               type="text"
               name="name"
               value={data.name}
@@ -93,7 +93,7 @@ const Register: React.FC = () => {
               Username
             </label>
             <input
-            placeholder="username"
+              placeholder="username"
               type="text"
               name="username"
               value={data.username}
@@ -112,7 +112,7 @@ const Register: React.FC = () => {
               Email
             </label>
             <input
-            placeholder="email"
+              placeholder="email"
               type="email"
               name="email"
               value={data.email}
@@ -131,7 +131,7 @@ const Register: React.FC = () => {
               Password
             </label>
             <input
-            placeholder="password"
+              placeholder="password"
               type="password"
               name="password"
               value={data.password}
@@ -155,10 +155,7 @@ const Register: React.FC = () => {
         {/* Navigation to registered users */}
         <p className="mt-4 text-center text-gray-600">
           Already have an account?{" "}
-          <a
-            href="/"
-            className="text-blue-600 underline hover:text-blue-800"
-          >
+          <a href="/" className="text-blue-600 underline hover:text-blue-800">
             Log In
           </a>
         </p>
