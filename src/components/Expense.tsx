@@ -5,7 +5,6 @@ import { useLocation } from "react-router-dom";
 const Expense: React.FC = () => {
   const { expenses, setExpenses, totalExpense } = useContext(AppContext)!;
   const location = useLocation();
-
   const [description, setDescription] = useState<string>("");
   const [amount, setAmount] = useState<string>("");
   const [date, setDate] = useState<string>("");

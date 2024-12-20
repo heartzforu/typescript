@@ -30,13 +30,13 @@ const ViewExpense: React.FC = () => {
                 <div className="flex space-x-4">
                   <button
                     onClick={() => editExpense(index)}
-                    className="text-blue-500 font-medium hover:underline"
+                    className="text-white font-medium hover:bg-yellow-200 bg-yellow-500 rounded w-12"
                   >
                     Edit
                   </button>
                   <button
                     onClick={() => deleteExpense(index)}
-                    className="text-red-500 font-medium hover:underline"
+                    className="text-white font-medium hover:bg-red-300 bg-red-500 rounded w-16"
                   >
                     Delete
                   </button>
