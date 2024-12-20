@@ -7,10 +7,12 @@ const ViewExpense: React.FC = () => {
 
   return (
     <div className="min-h-screen flex flex-col items-center py-10 bg-gray-100">
-      <h2 className="text-2xl font-bold text-gray-800 text-center mb-6 my-10">
+      {(expenses.length !== 0)?(<h2 className="text-2xl font-bold text-gray-800 text-center mb-6 my-10">
         Expense List
-      </h2>
-      <div className="w-full max-w-3xl bg-white p-6 rounded-lg shadow-md">
+      </h2>):(<h2 className="text-2xl font-bold text-gray-800 text-center mb-6 my-10 ">
+        List is Empty
+      </h2>)}
+      <div className="w-full max-w-3xl bg-white p-6 rounded-lg shadow-md ">
         {expenses.length > 0 ? (
           <ul className="space-y-4">
             {expenses.map((expense, index) => (

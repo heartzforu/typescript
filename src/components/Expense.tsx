@@ -87,7 +87,7 @@ const Expense: React.FC = () => {
         </form>
       </div>
       <div>
-        <h3>You had a total expense of ${totalExpense.toFixed(2)}</h3>
+        <h3>You have a total expense of ${totalExpense.toFixed(2)}</h3>
         <div className="bg-white rounded-lg text-center w-full max-w-md my-4">
           <a
             className="text-xl font-bold text-blue-700 text-center mt-4 hover:text-blue-400"
